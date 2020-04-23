@@ -1,23 +1,20 @@
-<html>
-    <head>
-        <title>Iglesia Baigorria</title>
-    </head>
-    <body>
-        <div>
-            <h1><a href="/">Iglesia Baigorria - Registro</a></h1>
-        </div>
+{% extends 'personas/base.html' %}
+{% block content %}
+        <table class="table table-bordered">
+            <tbody>
+                    {% for persona in personas %}
+                    <tr>
+                        <td>{{ persona.idpersona }}</td>
+                        <td><a href="{% url 'persona_detail' pk=persona.pk %}"> {{ persona.nombre }}</a></td>
+                        <td> {{ persona.apellido }}</td>
+                        <td> Fecha de Nacimiento: {{ persona.fechanac }}</td>
+                        <td>{{ persona.observaciones|linebreaksbr }}</td>
+                    </tr>
+                    {% endfor %}
+            </tbody>
+        </table>
 
-        {% for persona in personas %}
-        <div>
-            <p> Nombre: {{ persona.nombre }}</p>
-            <p> Apelido: {{ persona.apellido }}</p>
-            <p> Fecha de Nacimiento: {{ persona.fechanac }}</p>
-            
-            <p>{{ persona.observaciones|linebreaksbr }}</p>
-
-        </div>
-        {% endfor %}
+{% endblock %}
 
 
-    </body>
-</html>
+

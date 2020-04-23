@@ -1,0 +1,14 @@
+{% extends 'personas/base.html' %}
+
+{% block content %}
+    <div class="persona">
+        {% if persona.created_date %}
+            <div class="date">
+                {{ persona.created_date }}
+            </div>
+        {% endif %}
+        <a class="btn btn-default" href="{% url 'persona_edit' pk=persona.pk %}"><span class="glyphicon glyphicon-pencil"></span></a>
+        <h2>{{ persona.nombre }}</h2>
+        <p>{{ persona.observaciones|linebreaksbr }}</p>
+    </div>
+{% endblock %}
